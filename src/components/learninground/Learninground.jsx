@@ -40,34 +40,40 @@ function Learninground() {
   //   }
   // }
 
-  useEffect(() => {
-    if (localStorage.getItem("userLearningAttempted") === "true") {
-      if(localStorage.getItem('userTestAttempted') === "true"){
-        navigate("/", {replace: true});
-      }
-      else{
-        updateTestAttempted();
+  // useEffect(() => {
+  //   if (localStorage.getItem("userLearningAttempted") === "true") {
+  //     if(localStorage.getItem('userTestAttempted') === "true"){
+  //       navigate("/", {replace: true});
+  //     }
+  //     else{
+  //       updateTestAttempted();
 
-        console.log("user set true");
-        localStorage.setItem("userTestAttempted", true);
-      }
-    }
-    else{
-      navigate("/", { replace: true });
-    }
-  }, [])
+  //       console.log("user set true");
+  //       localStorage.setItem("userTestAttempted", true);
+  //     }
+  //   }
+  //   else{
+  //     navigate("/", { replace: true });
+  //   }
+  // }, [])
   
+  // useEffect(() => {
+  //   if (!localStorage.getItem("isLoggedIn")) {
+  //     setIsLoggedIn(false);
+  //     navigate("/", { replace: true });
+  //   } else {
+  //     setIsLoggedIn(true);
+  //   }
+  // }, [isLoggedIn]);
+
   useEffect(() => {
-    if (!localStorage.getItem("isLoggedIn")) {
-      setIsLoggedIn(false);
+    if (localStorage.getItem("userLearningAttempted") !== "true") {
       navigate("/", { replace: true });
-    } else {
-      setIsLoggedIn(true);
     }
-  }, [isLoggedIn]);
+  }, []);
 
   return (
-    <div style={{ backgroundColor: "#fee856", height: "100vh" }}>
+    <div style={{ backgroundColor: "#fee856", height: "100%" }}>
       {seedCount === 0 && (
         <>
           <Seed1

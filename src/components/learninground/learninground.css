@@ -48,3 +48,13 @@ input[type="submit"] {
   position: relative;
   right: -50vw;
 }
+
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  margin: 5% 0;
+}
+th, td {
+  background-color: #96D4D4;
+  padding: 15px;
+}

@@ -1,0 +1,17 @@
+.bigblue {
+    width: 90%;
+    padding: 1% 0;
+    font-family: Arial;
+    text-align: center;
+}
+.bigblue:active, .bigblue:hover{
+    background-color: DodgerBlue;
+}
+
+.bigblueSelected{
+    width: 90%;
+    padding: 1% 0;
+    font-family: Arial;
+    text-align: center;
+    background-color: DodgerBlue;
+}

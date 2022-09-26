@@ -2,77 +2,77 @@ export function generateNums() {
     return [
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
         {
           x: Math.floor(Math.random() * 10) + 1,
-          y: Math.floor(Math.random() * 40) + 30,
+          y: Math.floor(Math.random() * 10) + 1,
           z: Math.floor(Math.random() * 10) + 1,
         },
       ]

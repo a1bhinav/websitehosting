@@ -224,57 +224,14 @@ const Seed1 = ({ seedCount, setSeedCount, learningRound, setLearningRound }) => 
 
             {submit && (
               <div>
-                <p>
-                  Value predicted by model is: {modelValues[currentQuestion]}
-                </p>
-                <p>Correct Value is: {correctValues[currentQuestion]}</p>
-
-                {currentQuestion === 14 && (
-                  <button
-                    className="btn btn-primary btn-lg btn-demo"
-                    style={{ position: "relative", left: "10%" }}
-                    onClick={() => {
-                      values.push(currentValue);
-                      setValues(values);
-                      setShowGraph(true);
-                      setSubmit(false);
-                    }}
-                  >
-                    Proceed to next seed
-                  </button>
-                )}
-
                 <button
                   className="btn btn-primary btn-lg btn-demo"
                   style={{ position: "relative", left: "45%" }}
                   onClick={() => {
-                    if (currentQuestion >= 14 && currentQuestion < 19) {
-                      nums.push({
-                        x: Math.floor(Math.random() * 10) + 1,
-                        y: Math.floor(Math.random() * 40) + 30,
-                        z: Math.floor(Math.random() * 10) + 1,
-                      });
-                      setNums(nums);
-
-                      modelValues.push(
-                        Math.floor(
-                          2 * nums[0].x + 0.9 * nums[0].y + 0.8 * nums[0].z
-                        )
-                      );
-                      setModelValues(modelValues);
-
-                      correctValues.push(
-                        Math.floor(
-                          1.8 * nums[0].x + nums[0].y + 0.7 * nums[0].z
-                        )
-                      );
-                      setCorrectValues(correctValues);
-                    }
-
                     values.push(currentValue);
                     setValues(values);
 
-                    if (currentQuestion === 19) {
+                    if (currentQuestion === 4) {
                       setShowGraph(true);
                     } else {
                       setCurrentQuestion(currentQuestion + 1);
@@ -283,7 +240,7 @@ const Seed1 = ({ seedCount, setSeedCount, learningRound, setLearningRound }) => 
                     setSubmit(false);
                   }}
                 >
-                  {currentQuestion === 19 ? "Proceed to Next Seed" : "Next"}
+                  {currentQuestion === 4 ? "Proceed to Next Seed" : "Next"}
                 </button>
               </div>
             )}

@@ -265,10 +265,10 @@ function Instructionquestion() {
             onClick={async () => {
               // await updateLearningAttempted();
               await localStorage.setItem("userLearningAttempted", true);
-              navigate("/learninground");
+              navigate("/transitionlearning");
             }}
           >
-            Start Test
+            Proceed
           </button>
         ) : (
           <button
@@ -278,7 +278,7 @@ function Instructionquestion() {
               window.alert("Incorrect answers");
             }}
           >
-            Start Test
+            Proceed
           </button>
         )}
       </div>
