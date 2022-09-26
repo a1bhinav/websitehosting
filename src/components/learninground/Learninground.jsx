@@ -8,37 +8,37 @@ import Seed4 from "./seed4/Seed4.jsx";
 function Learninground() {
   const navigate = useNavigate();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [seedCount, setSeedCount] = useState(0);
 
   const [learningRound, setLearningRound] = useState([]);
   
-  const updateTestAttempted = async ()=>{
-    const res = await fetch('/api/testAttempted', {
-      method: 'POST',
-      headers:{
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        // _id: localStorage.getItem("userId")
-      })
-    });
+  // const updateTestAttempted = async ()=>{
+  //   const res = await fetch('/api/testAttempted', {
+  //     method: 'POST',
+  //     headers:{
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       // _id: localStorage.getItem("userId")
+  //     })
+  //   });
 
-    const data = await res.json();
+  //   const data = await res.json();
 
-    if(!data){
-      alert("Technical error");
-      console.log("Technical error");
-    }
-    else if (res.status === 401) {
-      window.alert(data.error);
-      console.log(data.error);
-    }
-    else {
-      console.log(data.message);
-    }
-  }
+  //   if(!data){
+  //     alert("Technical error");
+  //     console.log("Technical error");
+  //   }
+  //   else if (res.status === 401) {
+  //     window.alert(data.error);
+  //     console.log(data.error);
+  //   }
+  //   else {
+  //     console.log(data.message);
+  //   }
+  // }
 
   useEffect(() => {
     if (localStorage.getItem("userLearningAttempted") === "true") {

@@ -1,41 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { generateQ1, generateQ2, generateQ3, generateQ4 } from "./utils";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import Note from "../layout/Note";
-import styles from './style.module.css'; 
+import styles from "./style.module.css";
+
 
 function Instructionquestion() {
-  const [q1, setQ1] = useState(0);
-  const [q2, setQ2] = useState("");
-  const [q3, setQ3] = useState(0);
-  const [q4, setQ4] = useState("");
+
+  const updateQuestion = (q, setQ, ans)=>{
+      q.answer = ans;
+      setQ({...q});
+  }
+
+  const [q1, setQ1] = useState(generateQ1());
+  const [q2, setQ2] = useState(generateQ2());
+  const [q3, setQ3] = useState(generateQ3());
+  const [q4, setQ4] = useState(generateQ4());
 
   const navigate = useNavigate();
 
-  const updateLearningAttempted = async () => {
-    const res = await fetch("/api/learningAttempted", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // _id: localStorage.getItem("userId"),
-      }),
-    });
+  // const updateLearningAttempted = async () => {
+  //   const res = await fetch("/api/learningAttempted", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       _id: localStorage.getItem("userId"),
+  //     }),
+  //   });
 
-    const data = await res.json();
+  //   const data = await res.json();
 
-    if (!data) {
-      alert("Technical error");
-      console.log("Technical error");
-    } else if (res.status === 401) {
-      window.alert(data.error);
-      console.log(data.error);
-    } else {
-      console.log(data.message);
-    }
-  };
+  //   if (!data) {
+  //     alert("Technical error");
+  //     console.log("Technical error");
+  //   } else if (res.status === 401) {
+  //     window.alert(data.error);
+  //     console.log(data.error);
+  //   } else {
+  //     console.log(data.message);
+  //   }
+  // };
 
   return (
     <div
@@ -47,8 +55,6 @@ function Instructionquestion() {
     >
       <Header />
       <h3 style={{ marginBotttom: 0, fontWeight: "bold" }}>
-        {/* Make sure you properly have read the instructions or you won't be
-        allowed to take this test */}
         Make sure you have read the instructions properly as you have to answer
         the following questions.
         <br />
@@ -69,52 +75,48 @@ function Instructionquestion() {
         style={{
           margin: "1% auto",
           padding: "5%",
-          width: "40vw",
+          width: "80vw",
           backgroundColor: "#f9f9fc",
           textAlign: "center",
           borderRadius: "10px",
         }}
       >
         <div style={{ width: "100%", textAlign: "left" }}>
-          <h2>In this task you will</h2>
-          <div style={{ marginBottom: "5%", textAlign:'center'}}>
-            {q1 !== 0 && <h2>{q1}</h2>}
-            <button className={styles.bigblue}
+          <h2>{q1.question}</h2>
+          <div style={{ marginBottom: "5%", textAlign: "center" }}>
+            <button
+              className={q1.answer===0 ? styles.bigblueSelected : styles.bigblue}
               type="radio"
-              onClick={() => {
-                setQ1(a);
-              }}
+              onClick={()=> updateQuestion(q1, setQ1, 0)}
             >
-              make blind estimations on the optimal irrigation amount for 4 different crops
-            </button><br/>
-            <button className={styles.bigblue}
+              {q1.options[0]}
+            </button>
+            <br />
+            <button
+              className={q1.answer===1 ? styles.bigblueSelected : styles.bigblue}
               type="radio"
-              onClick={() => {
-                setQ1(b);
-              }}
+              onClick={()=> updateQuestion(q1, setQ1, 1)}
             >
-              make estimations on the optimal irrigation amount for 4 different crops based on three
-environmental factors
-            </button><br/>
-            <button className={styles.bigblue}
+              {q1.options[1]}
+            </button>
+            <br />
+            <button
+              className={q1.answer===2 ? styles.bigblueSelected : styles.bigblue}
               type="radio"
-              onClick={() => {
-                setQ1(c);
-              }}
+              onClick={()=> updateQuestion(q1, setQ1, 2)}
             >
-              make estimations on the optimal irrigation amount for 1 crop
-            </button><br/>
+              {q1.options[2]}
+            </button>
+            <br />
 
-            <button className={styles.bigblue}
+            <button
+              className={q1.answer===3 ? styles.bigblueSelected : styles.bigblue}
               type="radio"
-              onClick={() => {
-                setQ1(d);
-              }}
+              onClick={()=> updateQuestion(q1, setQ1, 3)}
             >
-          program a statistical model
-            </button><br/>
-
-
+              {q1.options[3]}
+            </button>
+            <br />
           </div>
         </div>
 
@@ -126,42 +128,40 @@ environmental factors
             marginRight: "auto",
           }}
         >
-          <h2>The optimal irrigation amount for each crop type</h2>
-          <div style={{ marginBottom: "5%", textAlign:'center' }}>
-            {q2 !== "" && <h2>{q2}</h2>}
-            <button className={styles.bigblue}
+          <h2>{q2.question}</h2>
+          <div style={{ marginBottom: "5%", textAlign: "center" }}>
+            <button
+              className={q2.answer===0 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ2("Irrigation");
-              }}
+              onClick={()=> updateQuestion(q2, setQ2, 0)}
             >
-             always follows the same process based on three environmental inputs
-            </button><br/>
-            <button className={styles.bigblue}
+              {q2.options[0]}
+            </button>
+            <br />
+            <button
+              className={q2.answer===1 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ2("Tiling");
-              }}
+              onClick={()=> updateQuestion(q2, setQ2, 1)}
             >
-              is determined by a random draw
-            </button><br/>
-            <button className={styles.bigblue}
+              {q2.options[1]}
+            </button>
+            <br />
+            <button
+              className={q2.answer===2 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ2("Harvesting");
-              }}
+              onClick={()=> updateQuestion(q2, setQ2, 2)}
             >
-             is based on more than three environmental input variables
-            </button><br/>
-            <button className={styles.bigblue}
+              {q2.options[2]}
+            </button>
+            <br />
+            <button
+              className={q2.answer===3 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ2("Harvesting");
-              }}
+              onClick={()=> updateQuestion(q2, setQ2, 3)}
             >
-            changes over the course of this task
-            </button><br/>
-
+              {q2.options[3]}
+            </button>
+            <br />
           </div>
         </div>
 
@@ -173,42 +173,40 @@ environmental factors
             marginRight: "auto",
           }}
         >
-          <h2>During the Learning Rounds you can</h2>
-          <div style={{ marginBottom: "5%", textAlign:'center' }}>
-            {q3 !== 0 && <h2>{q3}</h2>}
-            <button className={styles.bigblue}
+          <h2>{q3.question}</h2>
+          <div style={{ marginBottom: "5%", textAlign: "center" }}>
+            <button
+              className={q3.answer===0 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ3(3);
-              }}
+              onClick={()=> updateQuestion(q3, setQ3, 0)}
             >
-             earn bonus money
-            </button><br/>
-            <button className={styles.bigblue}
+              {q3.options[0]}
+            </button>
+            <br />
+            <button
+              className={q3.answer===1 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ3(4);
-              }}
+              onClick={()=> updateQuestion(q3, setQ3, 1)}
             >
-              not do anything
-            </button><br/>
-            <button className={styles.bigblue}
+              {q3.options[1]}
+            </button>
+            <br />
+            <button
+              className={q3.answer===2 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ3(5);
-              }}
+              onClick={()=> updateQuestion(q3, setQ3, 2)}
             >
-            choose between yourself and the statistical model
-            </button><br/>
-            <button className={styles.bigblue}
+              {q3.options[2]}
+            </button>
+            <br />
+            <button
+              className={q3.answer===3 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ3(5);
-              }}
+              onClick={()=> updateQuestion(q3, setQ3, 3)}
             >
-            learn about the task, the crop types and the statistical model
-            </button><br/>
-
+              {q3.options[3]}
+            </button>
+            <br />
           </div>
         </div>
 
@@ -220,57 +218,52 @@ environmental factors
             marginRight: "auto",
           }}
         >
-          <h2>
-          During the Official Rounds you
-          </h2>
-          <div style={{ marginBottom: "5%", textAlign:'center' }}>
-            {q4 !== "" && <h2>{q4}</h2>}
-            <button className={styles.bigblue}
+          <h2>{q4.question}</h2>
+          <div style={{ marginBottom: "5%", textAlign: "center" }}>
+            <button
+              className={q4.answer===0 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ4("random error");
-              }}
+              onClick={()=> updateQuestion(q4, setQ4, 0)}
             >
-              choose 20 times between your own estimations and the statistical model’s estimations to
-determine your bonus income from this task
-            </button><br/>
-            <button className={styles.bigblue}
+              {q4.options[0]}
+            </button>
+            <br />
+            <button
+              className={q4.answer===1 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ4("mean error");
-              }}
+              onClick={()=> updateQuestion(q4, setQ4, 1)}
             >
-             do not have to make your own estimations
-            </button><br/>
-            <button className={styles.bigblue}
+              {q4.options[1]}
+            </button>
+            <br />
+            <button
+              className={q4.answer===2 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ4("median error");
-              }}
+              onClick={()=> updateQuestion(q4, setQ4, 2)}
             >
-              cannot earn any money
-            </button><br/>
-            <button className={styles.bigblue}
+              {q4.options[2]}
+            </button>
+            <br />
+            <button
+              className={q4.answer===3 ? styles.bigblueSelected : styles.bigblue}
               type="button"
-              onClick={() => {
-                setQ4("median error");
-              }}
+              onClick={()=> updateQuestion(q4, setQ4, 3)}
             >
-             make estimations for two of the four crop types
-            </button><br/>
-
+              {q4.options[3]}
+            </button>
+            <br />
           </div>
         </div>
       </div>
 
       <div style={{ paddingTop: "1vh" }}>
-        {q1 === 4 && q2 === "Irrigation" && q3 === 3 && q4 === "mean error" ? (
+        {q1.answer === 1 && q2.answer === 2 && q3.answer === 3 && q4.answer === 0 ? (
           <button
             type="button"
             className="btn btn-primary btn-lg btn-demo"
             variant="body2"
             onClick={async () => {
-              await updateLearningAttempted();
+              // await updateLearningAttempted();
               await localStorage.setItem("userLearningAttempted", true);
               navigate("/learninground");
             }}

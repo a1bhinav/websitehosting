@@ -12,11 +12,6 @@ import "../../air/css/style.css.map";
 function Homepage() {
   return (
     <div>
-      {/* <p>WELCOME PAGE for the Project</p>
-      <button> <a href="/instructions"> Go to next page aka Instruction Page</a></button> */}
-
-      {/* <div className="fh5co-loader" /> */}
-
       <div id="page">
         <nav className="fh5co-nav" role="navigation">
           <div className="top-menu">
@@ -26,37 +21,8 @@ function Homepage() {
                   <div id="fh5co-logo">
                   </div>
                 </div>
-                <div className="col-xs-2">
-                  {/* {isLoggedIn && (
-                    <div id="fh5co-logo2">
-                      <NavLink
-                        className="btn btn-primary btn-lg btn-demo"
-                        to="/logout"
-                        variant="body2"
-                      >
-                        Logout
-                      </NavLink>
-                    </div>
-                  )}
-
-                  {!isLoggedIn && (
-                    <div id="fh5co-logo2">
-                      <NavLink
-                        className="btn btn-primary btn-lg btn-demo"
-                        to="/login"
-                        variant="body2"
-                      >
-                        Login
-                      </NavLink>
-                      <NavLink
-                        className="btn btn-primary btn-lg btn-demo"
-                        to="/signup"
-                        variant="body2"
-                      >
-                        Signup
-                      </NavLink>
-                    </div>
-                  )} */}
+                <div className="col-xs-20">
+                <h1>Welcome to the Test &amp; Human-AI Decision Making</h1>
                 </div>
               </div>
             </div>
@@ -68,38 +34,36 @@ function Homepage() {
           role="banner"
           style={{
             background: "#FEE856",
-            padding: "15% 0 15% 0",
+            padding: "2% 0 10% 0",
           }}
         >
           <div className="overlay" />
           <div className="container">
             <div className="row">
-              <div className="col-md-8 col-md-offset-2 text-center">
+              <div className="col-md-10 col-md-offset-1 text-center" style={{backgroundColor:"white", padding:"0 10%"}}>
                 <div className="display-t js-fullheight">
                   <div
                     className="display-tc js-fullheight animate-box"
                     data-animate-effect="fadeIn"
                   >
-                    <h1>Welcome to the Test &amp; Human-AI Decision Making</h1>
-                    <p>Welcome to our task!
-All your responses will be kept confidential and you will remain anonymous.
-This task will take approximately 20 minutes to complete. You will be paid £X for completing the task.
-Additionally, you can earn a bonus of up to £Y that depends on your actions, as explained in more details
-on the next pages.
-During the task, we will not speak of Pounds, but Coins. Your entire payoff will first be calculated in
-Coins. The Coins you earn during the task will be converted to Pounds at the end of the task. The
-following conversion rate applies:
-1 Coin = £Z
-Please click Proceed to start with the task.</p>
-                    
-                    
+                    <p style={{fontSize:'20px', fontWeight:'900'}}>Welcome to our task!</p>
+                    <p style={{marginBottom:'10%', textAlign:'justify', fontSize:'20px'}}>
+                      All your responses will be kept confidential and you will remain anonymous.<br/>
+                      This task will take approximately <b>20 minutes</b> to complete.<br/> You will be paid <b>£X</b> for completing the task.<br/><br/>
+                      Additionally, you can earn a bonus of up to <b>£Y</b> that depends on your actions, as explained in more details
+                      on the next pages. During the task, we will not speak of Pounds, but Coins.<br/><br/>
+                      Your entire payoff will first be calculated in
+                      Coins. The Coins you earn during the task will be converted to Pounds at the end of the task.<br/><br/>
+                      The following conversion rate applies:&nbsp;
+                      <b>1 Coin = £Z</b><br/><br/>
+                      Please click <b>Proceed</b> to start with the task.</p>
                     <p>
                       <NavLink
                           className="btn btn-primary btn-lg btn-demo"
                           to="/instructions"
                           variant="body2"
                         >
-                          Go to Instruction Page
+                          Proceed
                         </NavLink>
                       {/* {isLoggedIn ? (
                       userTestAttempted ? (
@@ -156,25 +120,6 @@ Please click Proceed to start with the task.</p>
             </div>
           </div>
         </header>
-        {/* <div id="fh5co-started">
-      <div className="overlay" />
-      <div className="container">
-        <div className="row animate-box">
-          <div className="col-md-8 col-md-offset-2 text-center fh5co-heading">
-            <h2>Hire Us!</h2>
-            <p>
-              Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia
-              reprehenderit. Eos cumque dicta adipisci architecto culpa amet.
-            </p>
-            <p>
-              <a href="#" className="btn btn-default btn-lg">
-                Contact Us
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div> */}
       </div>
     </div>
   );
