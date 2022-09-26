@@ -1,0 +1,50 @@
+body {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;  
+  flex-direction: column;
+}
+
+.lr-form{
+  display: flex;
+  flex-direction: row;
+}
+
+.lr-form input{
+  margin:0;
+  padding-left: 0;
+}
+
+form > input {
+    flex: 1 1 7ch;
+    margin: .5rem
+  }
+
+form > input[type="email"] {
+      flex: 1 1 5ch;
+    }
+
+input {
+  border: none;
+  background: hsl(0, 0%, 93%);
+  border-radius: .25rem;
+  padding: .75rem 1rem
+}
+
+input[type="submit"] {
+    width: 50%;
+    background: hotpink;
+    color: white;
+    box-shadow: 0 .75rem .5rem -.5rem hsl(0, 50%, 80%);
+}
+
+#fh5co-logo2{
+  display: flex;
+  position: relative;
+  right: -50vw;
+}
