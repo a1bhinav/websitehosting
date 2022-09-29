@@ -6,7 +6,7 @@ function TransitionOfficial() {
         <>
             <div
                 style={{
-                    background: "#FEE856",
+                    background: "#E4E1E1",
                     height: "100vh",
                 }}
             >
@@ -28,7 +28,7 @@ function TransitionOfficial() {
                         </p>
                         <button
                             style={{
-                                margin: "10vh 0 0 15vw",
+                                margin: "10vh 0 0 22vw",
                                 border: 0,
                                 background: "#ffffff",
                             }}

@@ -73,7 +73,7 @@ function Learninground() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "#fee856", height: "100%" }}>
+    <div style={{ backgroundColor: "#E4E1E1", height: "100%" }}>
       {seedCount === 0 && (
         <>
           <Seed1

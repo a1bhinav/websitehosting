@@ -4,7 +4,12 @@ import Chart from "react-apexcharts";
 import css from "../../learninground/learninground.css";
 import { generateNums, generateModelData, generateCorrectData } from "./utils";
 
-const Seed2 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
+const Seed2 = ({
+  seedCount,
+  setSeedCount,
+  learningRound,
+  setLearningRound,
+}) => {
   const navigate = useNavigate();
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -22,15 +27,16 @@ const Seed2 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
   const [currentValue, setCurrentValue] = useState(10);
 
   const [submit, setSubmit] = useState(false);
-  
+
   const [loading, setLoading] = useState(true);
 
   const [errorData, setErrorData] = useState([]);
 
   const [colors, setColors] = useState([]);
 
-  const getErrorData = async() => {
-    let error0 = 0, error1 = 0;
+  const getErrorData = async () => {
+    let error0 = 0,
+      error1 = 0;
     const errors = [];
     const colors = [];
 
@@ -43,15 +49,13 @@ const Seed2 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
     errors.push(error1);
     console.log(errors);
 
-    if(error0 > error1){
+    if (error0 > error1) {
       colors.push("#d4526e");
       colors.push("#13d8aa");
-    }
-    else if(error0 < error1){
+    } else if (error0 < error1) {
       colors.push("#13d8aa");
       colors.push("#d4526e");
-    }
-    else{
+    } else {
       colors.push("#13d8aa");
       colors.push("#13d8aa");
     }
@@ -111,14 +115,13 @@ const Seed2 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
   ];
 
   useEffect(() => {
-    if(showGraph){
+    if (showGraph) {
       getErrorData().then(() => {
         console.log("getter fn called");
         setLoading(false);
       });
     }
   }, [showGraph]);
-  
 
   return (
     <div style={{ margin: "0 20vw" }}>
@@ -138,13 +141,24 @@ const Seed2 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
         {showGraph ? (
           <div>
             <p>{nums.length}</p>
-            <p>graph to be shown</p>
+            <p>
+              You have completed 15 Learnings Rounds. If you feel like you
+              understand your Meemmaseed crop, you can choose to continue with
+              another crop. Alternatively, you can learn about Meemmaseed for
+              another 5 rounds
+            </p>
+
             <button
               className="btn btn-primary btn-lg btn-demo"
               style={{ position: "relative", left: "35%" }}
-              onClick={()=>{
-                setSeedCount(seedCount+1);
-                learningRound.push({nums, modelValues, correctValues, values});
+              onClick={() => {
+                setSeedCount(seedCount + 1);
+                learningRound.push({
+                  nums,
+                  modelValues,
+                  correctValues,
+                  values,
+                });
                 setLearningRound(learningRound);
               }}
             >
@@ -153,7 +167,6 @@ const Seed2 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
           </div>
         ) : (
           <div>
-            <h1> Q{currentQuestion + 1}</h1>
             <p>
               values of variables are : {nums[currentQuestion].x}{" "}
               {nums[currentQuestion].y} {nums[currentQuestion].z}
@@ -173,7 +186,7 @@ const Seed2 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
             />
 
             <input
-              style={{ marginBottom: "5%" }}
+              style={{ marginBottom: "5%", width: "25%" }}
               type="submit"
               defaultValue="Submit"
               onClick={() => {
@@ -185,7 +198,7 @@ const Seed2 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
                   setSubmit(true);
                   return;
                 }
-                alert("Input should be >= 10 and <= 30");
+                alert("Please provide an input between 0 to 70");
               }}
             />
 
@@ -259,6 +272,6 @@ const Seed2 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
       </div>
     </div>
   );
-}
+};
 
 export default Seed2;

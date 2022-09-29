@@ -22,7 +22,8 @@ function Homepage() {
                   </div>
                 </div>
                 <div className="col-xs-20">
-                <h1>Welcome to the Test &amp; Human-AI Decision Making</h1>
+                {/* <h1>Welcome to the Test &amp; Human-AI Decision Making</h1> */}
+                <h1 style={{marginLeft:'28vw'}}>Welcome to our task!</h1>
                 </div>
               </div>
             </div>
@@ -33,7 +34,7 @@ function Homepage() {
           className="fh5co-cover js-fullheight"
           role="banner"
           style={{
-            background: "#FEE856",
+            background: "#E4E1E1",
             padding: "2% 0 10% 0",
           }}
         >
@@ -46,7 +47,7 @@ function Homepage() {
                     className="display-tc js-fullheight animate-box"
                     data-animate-effect="fadeIn"
                   >
-                    <p style={{fontSize:'20px', fontWeight:'900'}}>Welcome to our task!</p>
+                    {/* <p style={{fontSize:'20px', fontWeight:'900'}}>Welcome to our task!</p> */}
                     <p style={{marginBottom:'10%', textAlign:'justify', fontSize:'20px'}}>
                       All your responses will be kept confidential and you will remain anonymous.<br/>
                       This task will take approximately <b>20 minutes</b> to complete.<br/> You will be paid <b>£X</b> for completing the task.<br/><br/>

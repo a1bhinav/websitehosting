@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .fh5co-nav {
-  background: rgb(254, 232, 86);
+  background: #E4E1E1;
   text-decoration: underline;
 }
 .fh5co-nav .top-menu {
@@ -346,14 +346,14 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-header .display-tc .btn.btn-learn,
 .fh5co-cover .display-tc .btn.btn-learn {
-  background: #fee856;
+  background: #E4E1E1;
   border: none;
   color: #000 !important;
 }
 #fh5co-header .display-tc .btn.btn-learn:hover, #fh5co-header .display-tc .btn.btn-learn:focus,
 .fh5co-cover .display-tc .btn.btn-learn:hover,
 .fh5co-cover .display-tc .btn.btn-learn:focus {
-  background: rgba(254, 232, 86, 0.9) !important;
+  background: #E4E1E1 !important;
   color: #000 !important;
 }
 #fh5co-header .display-tc .btn:hover, #fh5co-header .display-tc .btn:focus,
@@ -392,7 +392,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 #fh5co-features {
-  background: #FEE856;
+  background: #E4E1E1;
 }
 #fh5co-features .services-padding {
   padding: 7em 0;

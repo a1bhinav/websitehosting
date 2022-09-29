@@ -11,8 +11,8 @@ function Instructions() {
   return (
     <div
       style={{
-        background: "#FEE856",
-        height: "100vh",
+        background: "#E4E1E1",
+        height: "100%",
       }}
     >
       <div style={{ margin: "0 10vw" }}>
@@ -29,19 +29,34 @@ function Instructions() {
               In this task, you will take the role of a farmer. Your farm grows
               four different crops, each consuming <b>1 hectare</b> of land. The
               more crops your farm produces, the higher your additional bonus
-              payoff. The four crop types are:{" "}
-              <b>Meemmaseed, Joumusame, Gresley and Vussanut.</b> Your job in
-              this task is to oversee the irrigation of your crops.
+              payoff. The four crop types are:
+              <br />
+              <table style={{margin:'1% 0 1% 0'}}>
+                <tr>
+                  <th>Meemmaseed</th>
+                  <th>Joumusame</th>
+                  <th>Gresley</th>
+                  <th>Vussanut</th>
+                </tr>
+              </table>
+              Your job in this task is to oversee the irrigation of your crops.
               Specifically, you will decide with how many thousand gallons of
               water you want to water the different crop types.
               <br />
               To make an informed decision, you will receive information about
               three environmental factors that determine irrigation need:
               <br />
-              <b>
+              {/* <b>
                 sunshine (hours/day), average day temperature (Fahrenheit) and
                 wind speed (km/h).
-              </b>
+              </b> */}
+              <table style={{margin:0}}>
+                <tr>
+                  <th>Sunshine (hours/day)</th>
+                  <th>Average day temperature (Fahrenheit)</th>
+                  <th>Wind speed (km/h)</th>
+                </tr>
+              </table> 
             </p>
           )}
 
@@ -61,21 +76,22 @@ function Instructions() {
 
           {page === 2 && (
             <p>
-              Course of this task: This task has two stages: the Learning Rounds
-              and the Official Rounds. During the Learning Rounds, you will be
-              able to familiarize yourself with the irrigation requirements of
-              your four crops. Each round, you will be shown the sunshine-hours,
-              average temperature and wind speed for the next harvesting season.
-              Then, you will be asked to choose how much you want to water your
-              crop. You will make 20 of those decisions for each crop type,
-              resulting in 80 total rounds.
+              <b>Course of this task</b>: This task has two stages: the{" "}
+              <b>Learning Rounds </b>
+              and the <b>Official Rounds</b>. During the Learning Rounds, you
+              will be able to familiarize yourself with the irrigation
+              requirements of your four crops. Each round, you will be shown the
+              sunshine-hours, average temperature and wind speed for the next
+              harvesting season. Then, you will be asked to choose how much you
+              want to water your crop. You will make 20 of those decisions for
+              each crop type, resulting in 80 total rounds.
             </p>
           )}
 
           {page === 3 && (
             <p>
-              Course of this task: During the Learning Rounds, you will also
-              observe the irrigation estimation of a statistical model. The
+              <b>Course of this task</b>: During the Learning Rounds, you will
+              also observe the irrigation estimation of a statistical model. The
               model uses the same information that you will receive. The model
               does not receive any additional information that you will not
               receive.
@@ -84,14 +100,31 @@ function Instructions() {
 
           {page === 4 && (
             <p>
-              Course of this task: At the end of each learning rounds, you will
-              see: 1. Your decision 2. The optimal amount of irrigation 3. The
-              statistical model’s irrigation estimation You will complete the 80
-              Learning Rounds in blocks of 20, where each block gives you
+              <b>Course of this task</b>: At the end of each learning rounds,
+              you will see:
+              <div style={{marginLeft:'21%'}}>
+              <ul>
+              1. <b>Your decision</b>
+              </ul>
+              <ul>
+              2. <b>The optimal amount of irrigation</b>
+              </ul>
+              <ul>
+              3. <b>The statistical model’s irrigation estimation</b>
+              </ul>
+              </div>
+              You will complete the 80 Learning Rounds in blocks of 20, where each block gives you
               information about one specific crop type. You will learn about
-              your crops in the following order: 1. X 2. Y 3. Z 4. W (randomize
-              the crop names here, in accordance with the order the specific
-              subject will view them) If you think that you already learned
+              your crops in the following order: 
+              <table style={{margin:'1% 0 1% 0'}}>
+                <tr>
+                  <th>1. Meemmaseed</th>
+                  <th>2. Joumusame</th>
+                  <th>3. Gresley</th>
+                  <th>4. Vussanut</th>
+                </tr>
+              </table> 
+              If you think that you already learned
               enough about a crop’s irrigation need, you have a one-time
               opportunity to complete learning after 15 Learning Rounds and
               proceed to the next crop.
@@ -114,19 +147,29 @@ function Instructions() {
 
           {page === 6 && (
             <p>
-              Course of the Official Rounds You will complete 5 rounds for each
-              crop in the following order: 1. X 2. Y 3. Z 4. W Like before, you
-              will see the 3 environmental factors and choose your irrigation
-              amount. Afterwards, you will decide for each round, whether you
-              want to use your irrigation estimates, or the irrigation estimates
-              of the statistical model. During the Official Rounds, you do not
-              receive feedback on either your or the model’s accuracy.
+              <b>Course of the Official Rounds</b>: You will complete 5 rounds
+              for each crop in the following order:
+              <table style={{margin:'1% 0 1% 0'}}>
+                <tr>
+                  <th>1. Meemmaseed</th>
+                  <th>2. Joumusame</th>
+                  <th>3. Gresley</th>
+                  <th>4. Vussanut</th>
+                </tr>
+              </table>
+              Like before, you will see the 3 environmental factors and choose your
+              irrigation amount. Afterwards, you will decide for each round,
+              whether you want to use your irrigation estimates, or the
+              irrigation estimates of the statistical model. During the Official
+              Rounds, you do not receive feedback on either your or the model’s
+              accuracy.
             </p>
           )}
 
           {page === 7 && (
             <p>
-              Payment Official Rounds Your accuracy during the Official Rounds
+              <b>Payment Official Rounds: </b>
+              Your accuracy during the Official Rounds
               determines your bonus income from this task. You bonus will depend
               on how close your irrigation estimates are to the optimal
               irrigation as determined by the environment. The bonus will be
@@ -144,61 +187,79 @@ function Instructions() {
 
           {page === 8 && (
             <>
-            <p>
-              Click on the button below to proceed to the comprehension
-              questions. Once you answer them correctly, you will proceed to the
-              Learning Rounds. Use the Learning Rounds to familiarize yourself
-              with the task, your crops and the statistical model.
-            </p>
-            <button
-            style={{
-              margin: "10vh 0 0 15vw",
-              border: 0,
-              background: "#ffffff",
-            }}
-          >
-            <NavLink
-              className="btn btn-primary btn-lg btn-demo"
-              to="/instructionquestion"
-              variant="body2"
-            >
-              You sure you read all the instructions???
-            </NavLink>
-          </button>
-          </>
+              <p>
+                Click on the button below to proceed to the comprehension
+                questions. Once you answer them correctly, you will proceed to
+                the Learning Rounds. Use the Learning Rounds to familiarize
+                yourself with the task, your crops and the statistical model.
+              </p>
+              <button
+                style={{
+                  margin: "10vh 0 0 15vw",
+                  border: 0,
+                  background: "#ffffff",
+                }}
+              >
+                <NavLink
+                  className="btn btn-primary btn-lg btn-demo"
+                  to="/instructionquestion"
+                  variant="body2"
+                >
+                  Proceed to the comprehension questions
+                </NavLink>
+              </button>
+            </>
           )}
         </div>
 
-
         <div id="wrapper">
-          <div class="b-pagination-outer">
+          <div class="b-pagination-outer" style={{paddingBottom:'5%'}}>
             <ul id="border-pagination">
               <li>
-                <button onClick={()=>{
-                  if(page!==0){
-                    setPage(page-1);
-                  }
-                }}>«</button>
+                <button
+                  onClick={() => {
+                    if (page !== 0) {
+                      setPage(page - 1);
+                    }
+                  }}
+                >
+                  «
+                </button>
               </li>
 
               {currentPage.map((currentPage) => (
                 <li key={currentPage}>
                   {currentPage === page && (
-                    <button class="active" onClick={()=>{
-                      setPage(currentPage);
-                    }}>{currentPage + 1}</button>
+                    <button
+                      class="active"
+                      onClick={() => {
+                        setPage(currentPage);
+                      }}
+                    >
+                      {currentPage + 1}
+                    </button>
                   )}
-                  {currentPage !== page && <button onClick={()=>{
-                    setPage(currentPage);
-                  }}>{currentPage + 1}</button>}
+                  {currentPage !== page && (
+                    <button
+                      onClick={() => {
+                        setPage(currentPage);
+                      }}
+                    >
+                      {currentPage + 1}
+                    </button>
+                  )}
                 </li>
               ))}
               <li>
-              <button onClick={()=>{
-                  if(page!==8){
-                    setPage(page+1);
-                  }
-                }}>»</button>
+                <button
+                  onClick={() => {
+                    if (page !== 8) {
+                      setPage(page + 1);
+                    }
+                  }}
+                >
+                  »
+                </button>
               </li>
             </ul>
           </div>

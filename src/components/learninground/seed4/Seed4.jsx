@@ -34,8 +34,9 @@ const Seed4 = ({
 
   const [colors, setColors] = useState([]);
 
-  const getErrorData = async() => {
-    let error0 = 0, error1 = 0;
+  const getErrorData = async () => {
+    let error0 = 0,
+      error1 = 0;
     const errors = [];
     const colors = [];
 
@@ -48,15 +49,13 @@ const Seed4 = ({
     errors.push(error1);
     console.log(errors);
 
-    if(error0 > error1){
+    if (error0 > error1) {
       colors.push("#d4526e");
       colors.push("#13d8aa");
-    }
-    else if(error0 < error1){
+    } else if (error0 < error1) {
       colors.push("#13d8aa");
       colors.push("#d4526e");
-    }
-    else{
+    } else {
       colors.push("#13d8aa");
       colors.push("#13d8aa");
     }
@@ -116,7 +115,7 @@ const Seed4 = ({
   ];
 
   useEffect(() => {
-    if(showGraph){
+    if (showGraph) {
       getErrorData().then(() => {
         console.log("getter fn called");
         setLoading(false);
@@ -125,8 +124,14 @@ const Seed4 = ({
   }, [showGraph]);
 
   return (
-    <div style={{display: 'flex', flexDirection:'column', justifyContent:'center'}}>
-      <h3 style={{margin:'5vh 20vw 5vh 20vw'}}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
+      <h3 style={{ margin: "5vh 20vw 5vh 20vw" }}>
         This is for Vussanut seed irrigation <br />
         Input variables determining irrigation: sunshine (-), temperature (+),
         wind speed (-) <br />
@@ -143,7 +148,12 @@ const Seed4 = ({
           <div>
             {loading && (
               <div>
-                <p style={{display:'flex', justifyContent:'center'}}>graph to be shown</p>
+                <p style={{ display: "flex", justifyContent: "center" }}>
+                  You have completed 15 Learnings Rounds. If you feel like you
+                  understand your Meemmaseed crop, you can choose to continue
+                  with another crop. Alternatively, you can learn about
+                  Meemmaseed for another 5 rounds
+                </p>
               </div>
             )}
 
@@ -156,7 +166,7 @@ const Seed4 = ({
                   justifyContent: "center",
                   backgroundColor: "#fee856",
                   height: "100vh",
-                  flexDirection: 'column'
+                  flexDirection: "column",
                 }}
               >
                 <div>
@@ -190,12 +200,15 @@ const Seed4 = ({
                     />
                   </div>
 
-                  <div style={{ backgroundColor: "#fee856",
+                  <div
+                    style={{
+                      backgroundColor: "#fee856",
                       display: "flex",
                       justifyContent: "center",
-                      marginTop:'5vh',
-                      paddingBottom:'5vh'
-                  }}>
+                      marginTop: "5vh",
+                      paddingBottom: "5vh",
+                    }}
+                  >
                     <button
                       className="btn btn-primary btn-lg btn-demo"
                       // style={{ position: "relative", left: "35%" }}
@@ -239,10 +252,10 @@ const Seed4 = ({
                           console.log(data.message);
                         }
 
-                        navigate("/officialround", { replace: true });
+                        navigate("/transitionofficial", { replace: true });
                       }}
                     >
-                      Let's try official rounds; O Shall we???
+                      Proceed to Official Rounds
                     </button>
                   </div>
                 </div>
@@ -296,8 +309,7 @@ const Seed4 = ({
             )}
           </div>
         ) : (
-          <div style={{margin:'5vh 20vw 5vh 20vw'}}>
-            <h1> Q{currentQuestion + 1}</h1>
+          <div style={{ margin: "5vh 20vw 5vh 20vw" }}>
             <p>
               values of variables are : {nums[currentQuestion].x}{" "}
               {nums[currentQuestion].y} {nums[currentQuestion].z}
@@ -317,7 +329,7 @@ const Seed4 = ({
             />
 
             <input
-              style={{ marginBottom: "5%" }}
+              style={{ marginBottom: "5%", width: "25%" }}
               type="submit"
               defaultValue="Submit"
               onClick={() => {
@@ -329,7 +341,7 @@ const Seed4 = ({
                   setSubmit(true);
                   return;
                 }
-                alert("Input should be >= 10 and <= 30");
+                alert("Please provide an input between 0 to 70");
               }}
             />
 

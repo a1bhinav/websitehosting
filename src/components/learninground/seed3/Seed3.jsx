@@ -152,7 +152,12 @@ const Seed3 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
         {showGraph ? (
           <div>
             <p>{nums.length}</p>
-            <p>graph to be shown</p>
+            <p>
+              You have completed 15 Learnings Rounds. If you feel like you
+              understand your Meemmaseed crop, you can choose to continue with
+              another crop. Alternatively, you can learn about Meemmaseed for
+              another 5 rounds
+            </p>
             <button
               className="btn btn-primary btn-lg btn-demo"
               style={{ position: "relative", left: "35%" }}
@@ -167,7 +172,6 @@ const Seed3 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
           </div>
         ) : (
           <div>
-            <h1> Q{currentQuestion + 1}</h1>
             <p>
               values of variables are : {nums[currentQuestion].x}{" "}
               {nums[currentQuestion].y} {nums[currentQuestion].z}
@@ -187,7 +191,7 @@ const Seed3 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
             />
 
             <input
-              style={{ marginBottom: "5%" }}
+              style={{ marginBottom: "5%", width:'25%' }}
               type="submit"
               defaultValue="Submit"
               onClick={() => {
@@ -199,7 +203,7 @@ const Seed3 = ({seedCount, setSeedCount, learningRound, setLearningRound}) => {
                   setSubmit(true);
                   return;
                 }
-                alert("Input should be >= 10 and <= 30");
+                alert("Please provide an input between 0 to 70");
               }}
             />
 

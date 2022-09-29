@@ -4,10 +4,15 @@ import Chart from "react-apexcharts";
 import css from "../../learninground/learninground.css";
 import { generateNums, generateModelData, generateCorrectData } from "./utils";
 
-const Seed1 = ({ seedCount, setSeedCount, learningRound, setLearningRound }) => {
+const Seed1 = ({
+  seedCount,
+  setSeedCount,
+  learningRound,
+  setLearningRound,
+}) => {
   const navigate = useNavigate();
 
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(14);
 
   const [showGraph, setShowGraph] = useState(false);
 
@@ -29,9 +34,9 @@ const Seed1 = ({ seedCount, setSeedCount, learningRound, setLearningRound }) => 
 
   const [colors, setColors] = useState([]);
 
-
   const getErrorData = async () => {
-    let error0 = 0, error1 = 0;
+    let error0 = 0,
+      error1 = 0;
     const errors = [];
     const colors = [];
 
@@ -47,12 +52,10 @@ const Seed1 = ({ seedCount, setSeedCount, learningRound, setLearningRound }) => 
     if (error0 > error1) {
       colors.push("#d4526e");
       colors.push("#13d8aa");
-    }
-    else if (error0 < error1) {
+    } else if (error0 < error1) {
       colors.push("#13d8aa");
       colors.push("#d4526e");
-    }
-    else {
+    } else {
       colors.push("#13d8aa");
       colors.push("#13d8aa");
     }
@@ -120,33 +123,33 @@ const Seed1 = ({ seedCount, setSeedCount, learningRound, setLearningRound }) => 
     }
   }, [showGraph]);
 
-
-
   return (
     <div style={{ margin: "0 20vw" }}>
       <h3 style={{ paddingTop: "5%" }}>
-        This round is for <b style={{ fontSize: '30px' }}>Meemmaseed</b> irrigation
+        This round is for <b style={{ fontSize: "30px" }}>Meemmaseed</b>{" "}
+        irrigation
         <br />
         <br />
-        Input variables are randomly drawn<br />
+        <br />
+        {/* Input variables are randomly drawn<br /> */}
         <table>
           <tr>
-            <th>Input variables</th>
-            <th>High</th>
-            <th>Low</th>
+            <td>Input variables</td>
+            <td>High</td>
+            <td>Low</td>
           </tr>
           <tr>
-            <td>Sunshine (-)</td>
+            <td>Sunshine</td>
             <td>18</td>
             <td>1</td>
           </tr>
           <tr>
-            <td>Temperature (Fahrenheit) (-)</td>
+            <td>Temperature (Fahrenheit)</td>
             <td>104</td>
             <td>32</td>
           </tr>
           <tr>
-            <td>Wind (km/hr) (-)</td>
+            <td>Wind (km/hr)</td>
             <td>61</td>
             <td>1</td>
           </tr>
@@ -157,14 +160,24 @@ const Seed1 = ({ seedCount, setSeedCount, learningRound, setLearningRound }) => 
         {showGraph ? (
           <div>
             <p>{nums.length}</p>
-            <p>graph to be shown</p>
+            <p>
+              You have completed 15 Learnings Rounds. If you feel like you
+              understand your Meemmaseed crop, you can choose to continue with
+              another crop. Alternatively, you can learn about Meemmaseed for
+              another 5 rounds
+            </p>
 
             <button
               className="btn btn-primary btn-lg btn-demo"
               style={{ position: "relative", left: "35%" }}
               onClick={() => {
                 setSeedCount(seedCount + 1);
-                learningRound.push({ nums, modelValues, correctValues, values });
+                learningRound.push({
+                  nums,
+                  modelValues,
+                  correctValues,
+                  values,
+                });
                 setLearningRound(learningRound);
               }}
             >
@@ -173,22 +186,27 @@ const Seed1 = ({ seedCount, setSeedCount, learningRound, setLearningRound }) => 
           </div>
         ) : (
           <div>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <span>
-              <h2> Q{currentQuestion + 1} &nbsp; Predict the optimal irrigation (0-70 gallons):
-              </h2>
-              <table style={{marginLeft:'10%'}}>
-                <tr>
-                  <td>Sunshine</td>
-                  <td>Temperature</td>
-                  <td>Wind</td>
-                </tr>
-                <tr>
-                  <td>{nums[currentQuestion].x}</td>
-                  <td>{nums[currentQuestion].y}</td>
-                  <td>{nums[currentQuestion].z}</td>
-                </tr>
-              </table>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <span>
+                <h2>Predict the optimal irrigation (0-70 gallons):</h2>
+                <table style={{ marginLeft: "10%" }}>
+                  <tr>
+                    <td>Sunshine</td>
+                    <td>Temperature</td>
+                    <td>Wind</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>{nums[currentQuestion].x}</b>
+                    </td>
+                    <td>
+                      <b>{nums[currentQuestion].y}</b>
+                    </td>
+                    <td>
+                      <b>{nums[currentQuestion].z}</b>
+                    </td>
+                  </tr>
+                </table>
               </span>
             </div>
 
@@ -206,7 +224,7 @@ const Seed1 = ({ seedCount, setSeedCount, learningRound, setLearningRound }) => 
             />
 
             <input
-              style={{ marginBottom: "5%" }}
+              style={{ marginBottom: "5%", width: "25%" }}
               type="submit"
               defaultValue="Submit"
               onClick={() => {
@@ -218,7 +236,7 @@ const Seed1 = ({ seedCount, setSeedCount, learningRound, setLearningRound }) => 
                   setSubmit(true);
                   return;
                 }
-                alert("Input should be >= 0 and <= 70");
+                alert("Please provide an input between 0 to 70");
               }}
             />
 
