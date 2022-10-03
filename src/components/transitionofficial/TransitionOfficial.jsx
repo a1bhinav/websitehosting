@@ -20,8 +20,8 @@ function TransitionOfficial() {
                     </nav>
                     <div style={{ backgroundColor: "white", padding: "10vh 10vw" }}>
                         <p>
-                            You have successfully completed the Learning Rounds. Now, you will begin with the 20 Official Rounds.
-                            For each crop type, you will make five irrigation estimations. After submitting your estimation, you will
+                            You have successfully completed the Learning Rounds. Now, you will begin with the <b>20 Official Rounds</b>.
+                            <br/>For each crop type, you will make <b>five irrigation estimations</b>. After submitting your estimation, you will
                             decide whether to implement your irrigation amount, or the statistical model’s irrigation amount to
                             determine your bonus. You will not see the model’s estimation beforehand.
                             If you are ready, proceed by clicking the button below.

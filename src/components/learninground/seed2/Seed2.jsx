@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Chart from "react-apexcharts";
 import css from "../../learninground/learninground.css";
 import { generateNums, generateModelData, generateCorrectData } from "./utils";
+import ImageGresley from '../../../resources/Gresley.jpeg'
 
 const Seed2 = ({
   seedCount,
@@ -16,6 +17,8 @@ const Seed2 = ({
 
   const [showGraph, setShowGraph] = useState(false);
 
+  const [onChangeInput, setOnChangeInput] = useState(false);
+
   const [nums, setNums] = useState(generateNums());
 
   const [modelValues, setModelValues] = useState(generateModelData(nums));
@@ -24,7 +27,7 @@ const Seed2 = ({
 
   const [values, setValues] = useState([]);
 
-  const [currentValue, setCurrentValue] = useState(10);
+  const [currentValue, setCurrentValue] = useState(0);
 
   const [submit, setSubmit] = useState(false);
 
@@ -124,33 +127,51 @@ const Seed2 = ({
   }, [showGraph]);
 
   return (
-    <div style={{ margin: "0 20vw" }}>
+    <div style={{ margin: "0 15vw" }}>
       <h3 style={{ paddingTop: "5%" }}>
-        This round is for Meemmaseed irrigation
-        <br />
-        Input variables determining irrigation: sunshine (-), temperature (-),
-        wind speed (-) <br />
-        Sunshine-Input randomly drawn from (hours/day): High Low <br />
-        18 1 Temperature-Input randomly drawn from (Fahrenheit): High Low <br />
-        104 32 Wind-Input randomly drawn from (km/h): High Low
-        <br />
-        61 1 Irrigation-Output randomly drawn from (1000 gallons):
+        <div style={{ marginBottom:'5%', textAlign:'center'}}>
+        {!showGraph && <img src={ImageGresley} alt="Gresley" />}
+        <b style={{ fontSize: "40px", textDecoration:'underline' }}><br/>Irrigation: Gresley<br/></b>
+        <div style={{fontSize: "30px", marginTop:'20px' }}>
+        <b>Learning Round - {currentQuestion+1}/20</b>
+        </div>
+        </div>
       </h3>
 
       <div>
         {showGraph ? (
           <div>
-            <p>{nums.length}</p>
+            <h3 style={{textAlign:'center', fontWeight:'bold'}}>Summary</h3>
+            <div style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
+            <table id="result-table">
+                  <tr>
+                    <th>Learning Round</th>
+                    <th>Correct Value</th>
+                    <th>Model Value</th>
+                    <th>User Value</th>
+                  </tr>
+                  {values.map((value, index) => (
+                  <tr>
+                        <td>{index+1}</td>
+                        <td>{correctValues[index]}</td>
+                        <td>{modelValues[index]}</td>
+                        <td>{value}</td>
+                      </tr>
+                  ))}
+                </table>
+                {currentQuestion===14 &&
             <p>
-              You have completed 15 Learnings Rounds. If you feel like you
-              understand your Meemmaseed crop, you can choose to continue with
-              another crop. Alternatively, you can learn about Meemmaseed for
-              another 5 rounds
+              You have completed <b>15</b> Learnings Rounds.
+                  <br/>If you feel like you
+                  understand your <b>Gresley</b> seed crop, you can choose to continue
+                  with another crop. Alternatively, you can learn about <b>Gresley</b> seed for another <b>5 rounds</b>
             </p>
+}
 
+<div style={{display:'flex', justifyContent:'center'}}>
             <button
               className="btn btn-primary btn-lg btn-demo"
-              style={{ position: "relative", left: "35%" }}
+              style={currentQuestion===14 ? {width:'275px', marginRight:'15vw'} : {width:'275px'}}
               onClick={() => {
                 setSeedCount(seedCount + 1);
                 learningRound.push({
@@ -164,14 +185,78 @@ const Seed2 = ({
             >
               Proceed to Next Seed
             </button>
+
+            
+{currentQuestion===14 && 
+            <button
+              className="btn btn-primary btn-lg btn-demo"
+              // style={{ position: "relative", left: "30vw" }}
+              style={{width:'275px'}}
+              onClick={() => {
+                setCurrentQuestion(currentQuestion + 1);
+                setShowGraph(false);
+                setSubmit(false);
+
+                if (currentQuestion === 14) {
+                  nums.push({
+                    x: Math.floor(Math.random() * 10) + 1,
+                    y: Math.floor(Math.random() * 40) + 30,
+                    z: Math.floor(Math.random() * 10) + 1,
+                  });
+                  setNums(nums);
+
+                  modelValues.push(
+                    Math.floor(
+                      2 * nums[0].x + 0.9 * nums[0].y + 0.8 * nums[0].z
+                    )
+                  );
+                  setModelValues(modelValues);
+
+                  correctValues.push(
+                    Math.floor(
+                      1.8 * nums[0].x + nums[0].y + 0.7 * nums[0].z
+                    )
+                  );
+                  setCorrectValues(correctValues);
+                }
+              }}
+            >
+              Go to next Learning Round
+            </button>
+}
+          </div>
+          </div>
           </div>
         ) : (
           <div>
-            <p>
-              values of variables are : {nums[currentQuestion].x}{" "}
-              {nums[currentQuestion].y} {nums[currentQuestion].z}
-            </p>
-
+            <div style={{ display: "flex", flexDirection: "row", justifyContent:'center'}}>
+              <span>
+                <div style={{ marginBottom:'5%' }}>
+        {/* <b style={{fontSize: "30px" }}>Learning Round - {currentQuestion+1}/20</b> */}
+                </div>
+                <h2>Choose your irrigation amount (0 – 70 gallons (in thousands))</h2>
+                <table>
+                  <tr>
+                    <td>Sunshine ( 1 - 18 )</td>
+                    <td>Temperature ( 32 - 104 Fahrenheit )</td>
+                    <td>Wind ( 1 - 61 km/hr )</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>{nums[currentQuestion].x}</b>
+                    </td>
+                    <td>
+                      <b>{nums[currentQuestion].y}</b>
+                    </td>
+                    <td>
+                      <b>{nums[currentQuestion].z}</b>
+                    </td>
+                  </tr>
+                </table>
+              </span>
+            </div>
+            
+<div style={{ marginLeft:'10vw'}}>
             <input
               type="number"
               required
@@ -180,27 +265,36 @@ const Seed2 = ({
               id={`q${currentQuestion + 1}`}
               name={`q${currentQuestion + 1}`}
               defaultValue={0}
-              onChange={(e) => setCurrentValue(e.target.value)}
+              onChange={(e) => {
+                setCurrentValue(e.target.value);
+                setOnChangeInput(true);
+              }}
               style={{ width: "50%" }}
               disabled={submit}
             />
 
             <input
-              style={{ marginBottom: "5%", width: "25%" }}
+              style={onChangeInput ? 
+                { background:'#FE188B', marginBottom: "5%", width: "25%" }
+                :
+                { background:'#FDC6E2', marginBottom: "5%", width: "25%" }
+              }
               type="submit"
               defaultValue="Submit"
+              disabled={!onChangeInput}
               onClick={() => {
                 if (submit) {
                   alert("Question already answered.");
                   return;
                 }
-                if (currentValue >= 10 && currentValue <= 30) {
+                if (currentValue >= 0 && currentValue <= 70) {
                   setSubmit(true);
                   return;
                 }
                 alert("Please provide an input between 0 to 70");
               }}
             />
+            </div>
 
             {submit && (
               <div>
@@ -209,7 +303,7 @@ const Seed2 = ({
                 </p>
                 <p>Correct Value is: {correctValues[currentQuestion]}</p>
 
-                {currentQuestion === 14 && (
+                {/* {currentQuestion === 14 && (
                   <button
                     className="btn btn-primary btn-lg btn-demo"
                     style={{ position: "relative", left: "10%" }}
@@ -222,13 +316,13 @@ const Seed2 = ({
                   >
                     Proceed to next seed
                   </button>
-                )}
+                )} */}
 
                 <button
                   className="btn btn-primary btn-lg btn-demo"
                   style={{ position: "relative", left: "45%" }}
                   onClick={() => {
-                    if (currentQuestion >= 14 && currentQuestion < 19) {
+                    if (currentQuestion > 14 && currentQuestion < 19) {
                       nums.push({
                         x: Math.floor(Math.random() * 10) + 1,
                         y: Math.floor(Math.random() * 10) + 1,
@@ -254,16 +348,17 @@ const Seed2 = ({
                     values.push(currentValue);
                     setValues(values);
 
-                    if (currentQuestion === 19) {
+                    if (currentQuestion === 19 || currentQuestion === 14) {
                       setShowGraph(true);
                     } else {
                       setCurrentQuestion(currentQuestion + 1);
                     }
 
+                    setOnChangeInput(false);
                     setSubmit(false);
                   }}
                 >
-                  {currentQuestion === 19 ? "Proceed to Next Seed" : "Next"}
+                  Next
                 </button>
               </div>
             )}

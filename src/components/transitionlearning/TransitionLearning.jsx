@@ -20,8 +20,8 @@ function TransitionLearning() {
                     </nav>
                     <div style={{ backgroundColor: "white", padding: "10vh 10vw" }}>
                         <p>
-                            You will now begin with the 80 Learning Rounds.
-
+                            You will now begin with the <b>80 Learning Rounds.</b>
+                            <br/>
                             Your estimations during the Learning Rounds do not count towards your bonus.
                             HOWEVER they are meant to help you learn how to make good irrigation estimations and observe the
                             statistical model’s performance.

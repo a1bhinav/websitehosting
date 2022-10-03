@@ -10,7 +10,7 @@ function Learninground() {
 
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [seedCount, setSeedCount] = useState(0);
+  const [seedCount, setSeedCount] = useState(3);
 
   const [learningRound, setLearningRound] = useState([]);
   
@@ -73,7 +73,7 @@ function Learninground() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "#E4E1E1", height: "100%" }}>
+    <div style={{ backgroundColor: "#E4E1E1", minHeight:"100vh", height: "100%" }}>
       {seedCount === 0 && (
         <>
           <Seed1

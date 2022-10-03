@@ -26,10 +26,10 @@ function Instructions() {
         <div style={{ backgroundColor: "white", padding: "10vh 10vw" }}>
           {page === 0 && (
             <p>
-              In this task, you will take the role of a farmer. Your farm grows
-              four different crops, each consuming <b>1 hectare</b> of land. The
-              more crops your farm produces, the higher your additional bonus
-              payoff. The four crop types are:
+              In this task, you will take the role of a <b>farmer</b>. Your farm grows
+              <b> four different crops</b>, each consuming <b>1 hectare</b> of land. The
+              <b> more</b> crops your farm produces, the <b> higher</b> your additional bonus
+              payoff.<br/> The four crop types are:
               <br />
               <table style={{margin:'1% 0 1% 0'}}>
                 <tr>
@@ -39,12 +39,12 @@ function Instructions() {
                   <th>Vussanut</th>
                 </tr>
               </table>
-              Your job in this task is to oversee the irrigation of your crops.
+              Your job in this task is to oversee the<b> irrigation of your crops</b>.<br/>
               Specifically, you will decide with how many thousand gallons of
               water you want to water the different crop types.
               <br />
               To make an informed decision, you will receive information about
-              three environmental factors that determine irrigation need:
+              <b> three environmental factors</b> that determine irrigation need:
               <br />
               {/* <b>
                 sunshine (hours/day), average day temperature (Fahrenheit) and
@@ -62,45 +62,48 @@ function Instructions() {
 
           {page === 1 && (
             <p>
-              The three environmental input factors are the main determinants
-              for the optimal amount of irrigation, although there may be some
-              randomness involved. The effect of the environment on optimal
-              irrigation does not change over time. Thus, the process by which
+              The <b>three environmental input factors</b> are the main determinants
+              for the <b>optimal amount of irrigation</b>, although there may be some
+              <b> randomness</b> involved.<br/><br/> The <b>effect of the environment</b> on optimal
+              irrigation <b>does not change over time</b>. Thus, the process by which
               the environmental factors determine irrigation for each crop type
-              always remains the same. Additionally, the four crop types all
-              respond differently to the three environmental factors. Thus,
+              always remains the same.<br/><br/> <p><b>Additionally, the four crop types all
+              respond differently to the three environmental factors</b>. Thus,
               knowing the impact of sunshine hours on Meemmaseed irrigation does
-              not necessarily tell you much about its impact on Vussanut.
+              not necessarily tell you much about its impact on Vussanut.</p>
             </p>
           )}
 
           {page === 2 && (
             <p>
-              <b>Course of this task</b>: This task has two stages: the{" "}
+              <b>Course of this task</b>:<br/>
+              This task has two stages: the{" "}
               <b>Learning Rounds </b>
-              and the <b>Official Rounds</b>. During the Learning Rounds, you
-              will be able to familiarize yourself with the irrigation
-              requirements of your four crops. Each round, you will be shown the
-              sunshine-hours, average temperature and wind speed for the next
-              harvesting season. Then, you will be asked to choose how much you
-              want to water your crop. You will make 20 of those decisions for
-              each crop type, resulting in 80 total rounds.
+              and the <b>Official Rounds</b>.<br/><br/> During the <b>Learning Rounds</b>, you
+              will be able to <b>familiarize yourself with the irrigation
+              requirements</b> of your four crops. Each round, you will be shown the
+              <b> sunshine-hours, average temperature</b> and <b>wind speed</b> for the next
+              harvesting season.<br/><br/> Then, you will be asked to choose how much you
+              want to water your crop. You will make <b>20</b> of those decisions for
+              <b> each crop type</b>, resulting in <b> 80 total rounds</b>.
             </p>
           )}
 
           {page === 3 && (
             <p>
-              <b>Course of this task</b>: During the Learning Rounds, you will
-              also observe the irrigation estimation of a statistical model. The
+              <b>Course of this task</b>:<br/>
+              During the <b>Learning Rounds</b>, you will
+              also observe the <b>irrigation estimation of a statistical model</b>.<br/><br/> The
               model uses the same information that you will receive. The model
-              does not receive any additional information that you will not
+              does not receive any <b>additional information</b> that you will not
               receive.
             </p>
           )}
 
           {page === 4 && (
             <p>
-              <b>Course of this task</b>: At the end of each learning rounds,
+              <b>Course of this task</b>:<br/>
+              At the end of each learning rounds,
               you will see:
               <div style={{marginLeft:'21%'}}>
               <ul>
@@ -133,21 +136,22 @@ function Instructions() {
 
           {page === 5 && (
             <p>
-              After the Learning Rounds, you will complete 20 Official Rounds.
-              You will make 5 decisions for each crop. The decisions during the
-              Official Rounds determine your bonus income from this task. For
-              each decision, you will be able to choose between using your own
+              <b>After the Learning Rounds</b>, you will complete <b>20 Official Rounds</b>.
+              <br/><br/>You will make <b>5 decisions</b>  for each crop. The decisions during the
+              Official Rounds determine<b> your bonus income</b>  from this task. <br/><br/>For
+              each decision, you will be able to choose between using <b>your own </b>
               irrigation estimation, or the irrigation estimation of the
-              statistical model. If you choose your estimation, your decision
+              <b> statistical model</b>. <br/><br/><b>If you choose your estimation, your decision
               will be the one determining your income from this task. If you
               choose the statistical model’s estimation, your income will be
-              determined by the model’s performance.
+              determined by the model’s performance.</b>
             </p>
           )}
 
           {page === 6 && (
             <p>
-              <b>Course of the Official Rounds</b>: You will complete 5 rounds
+              <b>Course of the Official Rounds:</b><br/>
+              You will complete 5 rounds
               for each crop in the following order:
               <table style={{margin:'1% 0 1% 0'}}>
                 <tr>
@@ -160,25 +164,25 @@ function Instructions() {
               Like before, you will see the 3 environmental factors and choose your
               irrigation amount. Afterwards, you will decide for each round,
               whether you want to use your irrigation estimates, or the
-              irrigation estimates of the statistical model. During the Official
+              irrigation estimates of the statistical model.<br/><br/> <b>During the Official
               Rounds, you do not receive feedback on either your or the model’s
-              accuracy.
+              accuracy</b>.
             </p>
           )}
 
           {page === 7 && (
             <p>
-              <b>Payment Official Rounds: </b>
+              <b>Payment Official Rounds: </b><br/>
               Your accuracy during the Official Rounds
               determines your bonus income from this task. You bonus will depend
               on how close your irrigation estimates are to the optimal
-              irrigation as determined by the environment. The bonus will be
-              determined as follows: Bonus = 20 Coins – Error If you choose the
+              irrigation as determined by the environment. <br/>The bonus will be
+              determined as follows:<br/> <b>Bonus = 20 Coins – Error</b><br/> If you choose the
               perfect amount of irrigation, you receive 20 Coins per Official
-              Round. For each thousand gallons, i.e. for each point, your
-              estimation is off by, your bonus decreases by one Coin. Example:
-              Optimal Irrigation Amount (in thousand gallons): 26 Your
-              Estimation: 16 The Model’s Estimation: 19 If you chose to rely on
+              Round. For each thousand gallons, i.e. for <b>each point</b>, your
+              estimation is off by, your bonus decreases by one Coin.<br/><br/> <b>Example:</b><br/>
+              Optimal Irrigation Amount (in thousand gallons): 26 <br/>Your
+              Estimation: 16 <br/>The Model’s Estimation: 19 <br/>If you chose to rely on
               your estimation, you would receive a bonus of 10 Coins. If you
               chose to rely on the model’s estimation, you would receive a bonus
               of 13 Coins.
@@ -190,8 +194,11 @@ function Instructions() {
               <p>
                 Click on the button below to proceed to the comprehension
                 questions. Once you answer them correctly, you will proceed to
-                the Learning Rounds. Use the Learning Rounds to familiarize
-                yourself with the task, your crops and the statistical model.
+                the Learning Rounds. 
+                Use the Learning Rounds to familiarize
+                yourself with the task, your crops and the statistical model.<br/><br/>
+                <p><b>Note: </b>
+                <br/><b>If you cannot answer all comprehension questions within two trials, you will not be able to participate in this task.</b></p>
               </p>
               <button
                 style={{

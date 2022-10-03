@@ -17,6 +17,8 @@ function Instructionquestion() {
   const [q3, setQ3] = useState(generateQ3());
   const [q4, setQ4] = useState(generateQ4());
 
+  const [trialCount, setTrialCount] = useState(0);
+
   const navigate = useNavigate();
 
   // const updateLearningAttempted = async () => {
@@ -53,10 +55,8 @@ function Instructionquestion() {
     >
       {/* <Header /> */}
       <h3 style={{ marginBottom: 0, padding: "2% 0 2% 0", fontWeight: "bold" }}>
-        Make sure you have read the instructions properly as you have to answer
-        the following questions.
-        <br />
-        Or else, you won't be allowed to take this test.
+      Please answer the four comprehension questions.<br/>
+      If you have any problems, you can go back (see bottom of this page) to re-read the instructions
       </h3>
 
       <div
@@ -317,7 +317,16 @@ function Instructionquestion() {
               type="button"
               className="btn btn-primary btn-lg btn-demo"
               onClick={() => {
-                window.alert("Incorrect answers");
+                if(trialCount===0){
+                  window.alert("Incorrect Attempt 1");
+                }
+                else if(trialCount===1){
+                  window.alert("Incorrect Attempt 2");
+                }
+                else if(trialCount===2){
+                  navigate('/')
+                }
+                setTrialCount(trialCount+1);
               }}
             >
               Proceed to next

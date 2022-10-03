@@ -58,3 +58,9 @@ th, td {
   background-color: #96D4D4;
   padding: 15px;
 }
+
+img {
+  border-radius: 8px;
+  width: 20vw;
+  height: 20vh;
+}

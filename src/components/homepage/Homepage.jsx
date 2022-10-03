@@ -13,7 +13,7 @@ function Homepage() {
   return (
     <div>
       <div id="page">
-        <nav className="fh5co-nav" role="navigation">
+        {/* <nav className="fh5co-nav" role="navigation">
           <div className="top-menu">
             <div className="container">
               <div className="row">
@@ -22,33 +22,36 @@ function Homepage() {
                   </div>
                 </div>
                 <div className="col-xs-20">
-                {/* <h1>Welcome to the Test &amp; Human-AI Decision Making</h1> */}
-                <h1 style={{marginLeft:'28vw'}}>Welcome to our task!</h1>
+                <h1>Welcome to the Test &amp; Human-AI Decision Making</h1>
+                
+              <div className="col-md-10 col-md-offset-1 text-center"></div>
+                <h1 style={{textAlign:'center'}}>Welcome to our task!</h1>
                 </div>
               </div>
             </div>
           </div>
-        </nav>
+        </nav> */}
         <header
           id="fh5co-header"
           className="fh5co-cover js-fullheight"
           role="banner"
           style={{
             background: "#E4E1E1",
-            padding: "2% 0 10% 0",
+            padding: "2% 0 1% 0",
           }}
         >
           <div className="overlay" />
           <div className="container">
             <div className="row">
-              <div className="col-md-10 col-md-offset-1 text-center" style={{backgroundColor:"white", padding:"0 10%"}}>
-                <div className="display-t js-fullheight">
+              <div className="col-md-10 col-md-offset-1 text-center">
+              <h1 style={{color:'black', marginBottom:'10vh', textDecoration:'underline', fontFamily: '"Inconsolata", Arial, sans-serif'}}>Welcome to our task!</h1>
+                <div className="display-t js-fullheight"  style={{backgroundColor:"white", padding:"0 10%"}}>
                   <div
                     className="display-tc js-fullheight animate-box"
                     data-animate-effect="fadeIn"
                   >
                     {/* <p style={{fontSize:'20px', fontWeight:'900'}}>Welcome to our task!</p> */}
-                    <p style={{marginBottom:'10%', textAlign:'justify', fontSize:'20px'}}>
+                    <p style={{padding:'28px 0', textAlign:'justify', fontSize:'20px'}}>
                       All your responses will be kept confidential and you will remain anonymous.<br/>
                       This task will take approximately <b>20 minutes</b> to complete.<br/> You will be paid <b>£X</b> for completing the task.<br/><br/>
                       Additionally, you can earn a bonus of up to <b>£Y</b> that depends on your actions, as explained in more details
