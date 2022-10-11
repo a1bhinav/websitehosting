@@ -1,18 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.b838e9f8.css",
-    "main.js": "/static/js/main.9f6291ed.js",
-    "static/media/icomoon.svg?srf3rx": "/static/media/icomoon.d8bb08cd812ea9df189b.svg",
-    "static/media/icomoon.eot?srf3rx": "/static/media/icomoon.f53fba8098384bb57298.eot",
-    "static/media/icomoon.woff?srf3rx": "/static/media/icomoon.a364de96ca8459f15b68.woff",
-    "static/media/icomoon.ttf?srf3rx": "/static/media/icomoon.ba5dacb825a6f0dc1276.ttf",
-    "static/media/bootstrap.css.map": "/static/media/bootstrap.css.c8ea374fee0506a30e1f.map",
-    "static/media/loader.gif": "/static/media/loader.6e632ee354d233f4c249.gif",
-    "static/media/style.css.map": "/static/media/style.css.2279414f1017934c5fd6.map",
+    "main.css": "/static/css/main.4906bf36.css",
+    "main.js": "/static/js/main.4161ac4b.js",
+    "static/js/27.e503e880.chunk.js": "/static/js/27.e503e880.chunk.js",
+    "static/media/Vussanut.jpeg": "/static/media/Vussanut.fcb818059aeb096b6e59.jpeg",
+    "static/media/Gresley.jpeg": "/static/media/Gresley.b1bbde4ea983026d21e6.jpeg",
+    "static/media/Joumusame.jpeg": "/static/media/Joumusame.bef3f2dbfb110e8d62ce.jpeg",
+    "static/media/Meemmaseed.jpeg": "/static/media/Meemmaseed.f1240c724cf75e43aee2.jpeg",
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.b838e9f8.css",
-    "static/js/main.9f6291ed.js"
+    "static/css/main.4906bf36.css",
+    "static/js/main.4161ac4b.js"
   ]
 }

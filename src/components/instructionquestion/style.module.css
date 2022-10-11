@@ -1,59 +1,19 @@
 .bigblue {
-  width: 90%;
-  padding: 1% 0;
-  font-family: Arial;
-  text-align: center;
-}
-.bigblue:active,
-.bigblue:hover {
-  background-color: DodgerBlue;
-}
-
-.bigblueSelected {
-  width: 90%;
-  padding: 1% 0;
-  font-family: Arial;
-  text-align: center;
-  background-color: DodgerBlue;
-}
-
-.arrow {
-  cursor: pointer;
-  display: inline-block;
-  height: 65px;
-  margin-right: 40px;
-  position: relative;
-  line-height: 2.5em;
-  padding-left: 1em;
-  padding-right: 2em;
-  background: #dd356e;
-  color: white;
-}
-.arrow:after {
-  border-left: 20px solid #dd356e;
-}
-
-.arrow:after {
-  content: "";
-  position: absolute;
-  border-bottom: 35px solid transparent;
-  border-top: 30px solid transparent;
-  height: 0px;
-  width: 0px;
-  margin-right: -20px;
-  right: 0;
-}
-
-.arrow:hover,
-.arrow:active {
-  opacity: 0.8;
-  color: white;
-}
-
-.arrowLeft {
-  width: 0;
-  height: 0;
-  border-top: 30px solid transparent;
-  border-right: 50px solid #dd356e;
-  border-bottom: 35px solid transparent;
-}
+    cursor: pointer;
+    width: 90%;
+    padding: 1% 0;
+    font-family: Arial;
+    text-align: center;
+  }
+  .bigblue:active,
+  .bigblue:hover {
+    background-color: DodgerBlue;
+  }
+  
+  .bigblueSelected {
+    width: 90%;
+    padding: 1% 0;
+    font-family: Arial;
+    text-align: center;
+    background-color: DodgerBlue;
+  }

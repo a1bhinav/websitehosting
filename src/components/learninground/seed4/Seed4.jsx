@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import Chart from "react-apexcharts";
-import css from "../../learninground/learninground.css";
 import { generateNums, generateModelData, generateCorrectData } from "./utils";
-import ImageVussanut from '../../../resources/Vussanut.jpeg'
+import ImageVussanut from "../../../resources/Vussanut.jpeg";
+
+import { Layout, Col, Row, Button, Modal } from "antd";
+import "antd/dist/antd.css";
+// import css from "../../learninground/learninground.css";
+
+const { Content } = Layout;
 
 const Seed4 = ({
   seedCount,
   setSeedCount,
   learningRound,
   setLearningRound,
+  toggleOfficial
 }) => {
   const navigate = useNavigate();
 
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(14);
 
   const [showGraph, setShowGraph] = useState(false);
-  
+
   const [onChangeInput, setOnChangeInput] = useState(false);
 
   const [nums, setNums] = useState(generateNums());
@@ -33,15 +38,55 @@ const Seed4 = ({
 
   const [loading, setLoading] = useState(true);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    if (currentQuestion > 14 && currentQuestion < 19) {
+      nums.push({
+        x: Math.floor(Math.random() * 10) + 1,
+        y: Math.floor(Math.random() * 40) + 30,
+        z: Math.floor(Math.random() * 10) + 1,
+      });
+      setNums(nums);
+
+      modelValues.push(
+        Math.floor(2 * nums[currentQuestion].x + 0.9 * nums[currentQuestion].y + 0.8 * nums[currentQuestion].z)
+      );
+      setModelValues(modelValues);
+
+      correctValues.push(
+        Math.floor(1.8 * nums[currentQuestion].x + nums[currentQuestion].y + 0.7 * nums[currentQuestion].z)
+      );
+      setCorrectValues(correctValues);
+    }
+
+    values.push(currentValue);
+    setValues(values);
+
+    if (currentQuestion === 19 || currentQuestion === 14) {
+      setShowGraph(true);
+    } else {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+
+    setOnChangeInput(false);
+    setSubmit(false);
+    setIsModalOpen(false);
+  };
+
   const [errorData, setErrorData] = useState([]);
 
-  const [colors, setColors] = useState([]);
+  // const [colors, setColors] = useState([]);
 
   const getErrorData = async () => {
     let error0 = 0,
       error1 = 0;
     const errors = [];
-    const colors = [];
+    // const colors = [];
 
     for (let i = 0; i < correctValues.length; i++) {
       error0 += Math.abs(correctValues[i] - modelValues[i]);
@@ -52,70 +97,70 @@ const Seed4 = ({
     errors.push(error1);
     console.log(errors);
 
-    if (error0 > error1) {
-      colors.push("#d4526e");
-      colors.push("#13d8aa");
-    } else if (error0 < error1) {
-      colors.push("#13d8aa");
-      colors.push("#d4526e");
-    } else {
-      colors.push("#13d8aa");
-      colors.push("#13d8aa");
-    }
+    // if (error0 > error1) {
+    //   colors.push("#d4526e");
+    //   colors.push("#13d8aa");
+    // } else if (error0 < error1) {
+    //   colors.push("#13d8aa");
+    //   colors.push("#d4526e");
+    // } else {
+    //   colors.push("#13d8aa");
+    //   colors.push("#13d8aa");
+    // }
 
-    setColors(colors);
+    // setColors(colors);
     setErrorData(errors);
     console.log(errorData);
   };
 
-  const options = {
-    tooltip: {
-      enabled: false,
-    },
-    chart: {
-      height: 200,
-      type: "bar",
-      offsetY: 16,
-      toolbar: {
-        show: false,
-      },
-    },
-    plotOptions: {
-      bar: {
-        distributed: true,
-        // horizontal: true,
-        barHeight: "85%",
-      },
-    },
-    dataLabels: {
-      enabled: true,
-    },
-    xaxis: {
-      categories: ["Model Error", "Human Error"],
-      labels: {
-        show: false,
-      },
-      // position: "top"
-    },
-    yaxis: {
-      show: false,
-    },
-    grid: {
-      padding: {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-      },
-    },
-    colors: colors,
-  };
+  // const options = {
+  //   tooltip: {
+  //     enabled: false,
+  //   },
+  //   chart: {
+  //     height: 200,
+  //     type: "bar",
+  //     offsetY: 16,
+  //     toolbar: {
+  //       show: false,
+  //     },
+  //   },
+  //   plotOptions: {
+  //     bar: {
+  //       distributed: true,
+  //       // horizontal: true,
+  //       barHeight: "85%",
+  //     },
+  //   },
+  //   dataLabels: {
+  //     enabled: true,
+  //   },
+  //   xaxis: {
+  //     categories: ["Model Error", "Human Error"],
+  //     labels: {
+  //       show: false,
+  //     },
+  //     // position: "top"
+  //   },
+  //   yaxis: {
+  //     show: false,
+  //   },
+  //   grid: {
+  //     padding: {
+  //       top: 0,
+  //       right: 0,
+  //       bottom: 0,
+  //       left: 0,
+  //     },
+  //   },
+  //   colors: colors,
+  // };
 
-  let series = [
-    {
-      data: errorData,
-    },
-  ];
+  // let series = [
+  //   {
+  //     data: errorData,
+  //   },
+  // ];
 
   useEffect(() => {
     if (showGraph) {
@@ -127,336 +172,261 @@ const Seed4 = ({
   }, [showGraph]);
 
   return (
-    <div style={{ margin: "0 15vw" }}>
-      <h3 style={{ paddingTop: "5%" }}>
-      <div style={{ marginBottom:'5%', textAlign:'center'}}>
-        {!showGraph && <img src={ImageVussanut} alt="Vussanut Seed" />}
-        <b style={{ fontSize: "40px", textDecoration:'underline' }}><br/>Irrigation: Vussanut Seed<br/></b>
-        <div style={{fontSize: "30px", marginTop:'20px' }}>
-        <b>Learning Round - {currentQuestion+1}/20</b>
-        </div>
-        </div>
-      </h3>
-
-      <div>
-        {showGraph ? (
+    <div>
+      <Layout className="layout">
+        <h1 className="header-style-normal" style={{ fontSize: "25px" }}>
+          Training Round {currentQuestion + 1}/20 - Irrigation: Vussanut
+          {!showGraph && <img src={ImageVussanut} alt="Vussanut" />}
+        </h1>
+        <Content className="site-layout-content">
           <div>
-          <h3 style={{textAlign:'center', fontWeight:'bold'}}>Summary</h3>
-            <div style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
-            <table id="result-table">
-                  <tr>
-                    <th>Learning Round</th>
-                    <th>Correct Value</th>
-                    <th>Model Value</th>
-                    <th>User Value</th>
-                  </tr>
-                  {values.map((value, index) => (
-                  <tr>
-                        <td>{index+1}</td>
+            {showGraph ? (
+              <div>
+                <h3 style={{ textAlign: "center", fontWeight: "bold" }}>
+                  Summary
+                </h3>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
+                  <table id="result-table">
+                    <tr>
+                      <th>Training Round</th>
+                      <th>Correct Value</th>
+                      <th>Model Value</th>
+                      <th>User Value</th>
+                    </tr>
+                    {values.map((value, index) => (
+                      <tr>
+                        <td>{index + 1}</td>
                         <td>{correctValues[index]}</td>
                         <td>{modelValues[index]}</td>
                         <td>{value}</td>
                       </tr>
-                  ))}
-                </table>
-            {currentQuestion===14 && 
-                <p>
-                  You have completed <b>15</b> Learnings Rounds.
-                  <br/>If you feel like you
-                  understand your <b>Vussanut</b> seed crop, you can choose to continue
-                  with another crop. Alternatively, you can learn about <b>Vussanut</b> seed for another <b>5 rounds</b>
-                </p>
-}
+                    ))}
+                  </table>
+                  {currentQuestion === 14 && (
+                    <p>
+                      You have completed <b>15</b> Trainings Rounds.
+                      <br />
+                      If you feel like you understand your <b>Vussanut</b> seed
+                      crop, you can choose to continue with another crop.
+                      Alternatively, you can learn about <b>Vussanut</b> seed
+                      for another <b>5 rounds</b>
+                    </p>
+                  )}
 
-<div style={{display:'flex', justifyContent:'center'}}>
-            <button
-              className="btn btn-primary btn-lg btn-demo"
-              style={currentQuestion===14 ? {width:'275px', marginRight:'15vw'} : {width:'275px'}}
-              onClick={() => {
-                setSeedCount(seedCount + 1);
-                learningRound.push({
-                  nums,
-                  modelValues,
-                  correctValues,
-                  values,
-                });
-                setLearningRound(learningRound);
-              }}
-            >
-              Proceed to Next Seed
-            </button>
-            
-{currentQuestion===14 && 
-            <button
-              className="btn btn-primary btn-lg btn-demo"
-              // style={{ position: "relative", left: "30vw" }}
-              style={{width:'275px'}}
-              onClick={() => {
-                setCurrentQuestion(currentQuestion + 1);
-                setShowGraph(false);
-                setSubmit(false);
+                  <div style={
+                    currentQuestion === 14
+                    ? { marginLeft: "20%" }
+                    : { marginLeft: "25vw"}
+                  }>
+                    <Row
+                      gutter={{
+                        xs: 8,
+                        sm: 16,
+                        md: 24,
+                        lg: 32,
+                      }}
+                    >
+                      <Col className="gutter-row" span={12}>
+                        <div className="button-container">
+                          <Button
+                            type="primary"
+                            shape="round"
+                            size="large"
+                            style={
+                              currentQuestion === 14
+                                ? { width: "275px", marginRight: "15vw" }
+                                : { width: "275px" }
+                            }
+                            onClick={() => {
+                              setSeedCount(seedCount + 1);
+                              learningRound.push({
+                                nums,
+                                modelValues,
+                                correctValues,
+                                values,
+                              });
+                              setLearningRound(learningRound);
+                              toggleOfficial();
+                            }}
+                          >
+                            Go to Official Rounds
+                          </Button>
+                        </div>
+                      </Col>
 
-                if (currentQuestion === 14) {
-                  nums.push({
-                    x: Math.floor(Math.random() * 10) + 1,
-                    y: Math.floor(Math.random() * 40) + 30,
-                    z: Math.floor(Math.random() * 10) + 1,
-                  });
-                  setNums(nums);
+                      {currentQuestion === 14 && (
+                        <Col className="gutter-row" span={12}>
+                          <div
+                            className="button-container"
+                            style={{ width: "275px" }}
+                            onClick={() => {
+                              setCurrentQuestion(currentQuestion + 1);
+                              setShowGraph(false);
+                              setSubmit(false);
 
-                  modelValues.push(
-                    Math.floor(
-                      2 * nums[0].x + 0.9 * nums[0].y + 0.8 * nums[0].z
-                    )
-                  );
-                  setModelValues(modelValues);
+                              if (currentQuestion === 14) {
+                                nums.push({
+                                  x: Math.floor(Math.random() * 10) + 1,
+                                  y: Math.floor(Math.random() * 40) + 30,
+                                  z: Math.floor(Math.random() * 10) + 1,
+                                });
+                                setNums(nums);
 
-                  correctValues.push(
-                    Math.floor(
-                      1.8 * nums[0].x + nums[0].y + 0.7 * nums[0].z
-                    )
-                  );
-                  setCorrectValues(correctValues);
-                }
-              }}
-            >
-              Go to next Learning Round
-            </button>
-}
+                                modelValues.push(
+                                  Math.floor(
+                                    2 * nums[currentQuestion].x +
+                                      0.9 * nums[currentQuestion].y +
+                                      0.8 * nums[currentQuestion].z
+                                  )
+                                );
+                                setModelValues(modelValues);
 
-          </div>
-          </div>
-          </div>
-
-        //     {!loading && (
-        //       <div
-        //         style={{
-        //           // backgroundColor: "#ffe9e9",
-        //           // height:'100%',
-        //           display: "flex",
-        //           justifyContent: "center",
-        //           backgroundColor: "#fee856",
-        //           height: "100vh",
-        //           flexDirection: "column",
-        //         }}
-        //       >
-        //         <div>
-        //           <h2
-        //             style={{
-        //               display: "flex",
-        //               justifyContent: "center",
-        //               paddingTop: "5vh",
-        //             }}
-        //           >
-        //             graph is being shown
-        //           </h2>
-
-        //           <div
-        //             style={{
-        //               backgroundColor: "#ffe9e9",
-        //               display: "flex",
-        //               justifyContent: "center",
-        //               margin: "5vh 20vw 0 20vw",
-        //               // overflow: "auto",
-        //             }}
-        //           >
-        //             <Chart
-        //               options={options}
-        //               series={series}
-        //               type="bar"
-        //               height={500}
-        //               width={400}
-        //               className="apex-charts"
-        //               dir="ltr"
-        //             />
-        //           </div>
-
-        //           <div
-        //             style={{
-        //               backgroundColor: "#fee856",
-        //               display: "flex",
-        //               justifyContent: "center",
-        //               marginTop: "5vh",
-        //               paddingBottom: "5vh",
-        //             }}
-        //           >
-        //             <button
-        //               className="btn btn-primary btn-lg btn-demo"
-        //               // style={{ position: "relative", left: "35%" }}
-        //               // onClick={()=>{
-        //               //   setSeedCount(seedCount+1);
-        //               //   learningRound.push({nums, modelValues, correctValues, values});
-        //               //   setLearningRound(learningRound);
-        //               // }}
-
-        //               onClick={async () => {
-        //                 learningRound.push({
-        //                   nums,
-        //                   modelValues,
-        //                   correctValues,
-        //                   values,
-        //                 });
-        //                 setLearningRound(learningRound);
-
-        //                 console.log(learningRound);
-
-        //                 const res = await fetch("/api/updateLearningRound", {
-        //                   method: "POST",
-        //                   headers: {
-        //                     "Content-Type": "application/json",
-        //                   },
-        //                   body: JSON.stringify({
-        //                     _id: localStorage.getItem("userId"),
-        //                     learningRound: learningRound,
-        //                   }),
-        //                 });
-
-        //                 const data = await res.json();
-
-        //                 if (!data) {
-        //                   window.alert("Technical error");
-        //                   console.log("Technical error");
-        //                 } else if (res.status === 401) {
-        //                   window.alert(data.error);
-        //                   console.log(data.error);
-        //                 } else {
-        //                   console.log(data.message);
-        //                 }
-
-        //                 navigate("/transitionofficial", { replace: true });
-        //               }}
-        //             >
-        //               Proceed to Official Rounds
-        //             </button>
-        //           </div>
-        //         </div>
-        //         {/* <div style={{ display: "flex", justifyContent: "center" }}>
-        //   <button
-        //     style={{
-        //       border: 0,
-        //       padding: "45vh 0 45vh 0",
-        //       backgroundColor: "#fee856",
-        //     }}
-        //   >
-        //     <NavLink
-        //       className="btn btn-primary btn-lg btn-demo"
-        //       to="/officialround"
-        //       variant="body2"
-        //       onClick={async () => {
-        //         console.log(learningRound);
-
-        //         const res = await fetch("/api/updateLearningRound", {
-        //           method: "POST",
-        //           headers: {
-        //             "Content-Type": "application/json",
-        //           },
-        //           body: JSON.stringify({
-        //             _id: localStorage.getItem("userId"),
-        //             learningRound: learningRound
-        //           })
-        //         });
-
-        //         const data = await res.json();
-
-        //         if(!data){
-        //           window.alert("Technical error");
-        //           console.log("Technical error");
-        //         }
-        //         else if (res.status === 422 || res.status === 400) {
-        //           window.alert(data.error);
-        //           console.log(data.error);
-        //         }
-        //         else {
-
-        //         }
-        //       }}
-        //     >
-        //       Let's try official rounds; O Shall we???
-        //     </NavLink>
-        //   </button>
-        // </div>
-        //      */}
-        //       </div>
-        //     )}
-        //   </div>
-        ) : (
-          <div>
-            <div style={{ display: "flex", flexDirection: "row", justifyContent:'center'}}>
-              <span>
-                <div style={{ marginBottom:'5%' }}>
-        {/* <b style={{fontSize: "30px" }}>Learning Round - {currentQuestion+1}/20</b> */}
+                                correctValues.push(
+                                  Math.floor(
+                                    1.8 * nums[currentQuestion].x +
+                                      nums[currentQuestion].y +
+                                      0.7 * nums[currentQuestion].z
+                                  )
+                                );
+                                setCorrectValues(correctValues);
+                              }
+                            }}
+                          >
+                            <Button type="primary" shape="round" size="large">
+                              Go to next Training Round
+                            </Button>
+                          </div>
+                        </Col>
+                      )}
+                    </Row>
+                  </div>
                 </div>
-                <h2>Choose your irrigation amount (0 – 70 gallons (in thousands))</h2>
-                <table>
-                  <tr>
-                    <td>Sunshine ( 1 - 18 )</td>
-                    <td>Temperature ( 32 - 104 Fahrenheit )</td>
-                    <td>Wind ( 1 - 61 km/hr )</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <b>{nums[currentQuestion].x}</b>
-                    </td>
-                    <td>
-                      <b>{nums[currentQuestion].y}</b>
-                    </td>
-                    <td>
-                      <b>{nums[currentQuestion].z}</b>
-                    </td>
-                  </tr>
-                </table>
-              </span>
-            </div>
-
-
-          <div style={{ marginLeft: "10vw" }}>
-            <input
-              type="number"
-              required
-              min={0}
-              max={70}
-              id={`q${currentQuestion + 1}`}
-              name={`q${currentQuestion + 1}`}
-              defaultValue={0}
-              onChange={(e) => {
-                setCurrentValue(e.target.value);
-                setOnChangeInput(true);
-              }}
-              style={{ width: "50%" }}
-              disabled={submit}
-            />
-
-            <input
-              style={onChangeInput ? 
-                { background:'#FE188B', marginBottom: "5%", width: "25%" }
-                :
-                { background:'#FDC6E2', marginBottom: "5%", width: "25%" }
-              }
-              type="submit"
-              defaultValue="Submit"
-              disabled={!onChangeInput}
-              onClick={() => {
-                if (submit) {
-                  alert("Question already answered.");
-                  return;
-                }
-                if (currentValue >= 0 && currentValue <= 70) {
-                  setSubmit(true);
-                  return;
-                }
-                alert("Please provide an input between 0 to 70");
-              }}
-            />
-            </div>
-
-            {submit && (
+              </div>
+            ) : (
               <div>
-                <p>
-                  Value predicted by model is: {modelValues[currentQuestion]}
-                </p>
-                <p>Correct Value is: {correctValues[currentQuestion]}</p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                  }}
+                >
+                  <span>
+                    <div style={{ marginBottom: "5%" }}></div>
+                    <h2>
+                      Choose your irrigation amount (0 – 70 gallons (in
+                      thousands))
+                    </h2>
+                    <table>
+                      <tr>
+                        <td>Sunshine ( 1 - 18 )</td>
+                        <td>Temperature ( 32 - 104 Fahrenheit )</td>
+                        <td>Wind ( 1 - 61 km/hr )</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>{nums[currentQuestion].x}</b>
+                        </td>
+                        <td>
+                          <b>{nums[currentQuestion].y}</b>
+                        </td>
+                        <td>
+                          <b>{nums[currentQuestion].z}</b>
+                        </td>
+                      </tr>
+                    </table>
+                  </span>
+                </div>
 
-                {/* {currentQuestion === 14 && (
+                <div style={{ marginLeft: "10vw" }}>
+                  <input
+                    type="number"
+                    required
+                    min={0}
+                    max={70}
+                    id={`q${currentQuestion + 1}`}
+                    name={`q${currentQuestion + 1}`}
+                    defaultValue={0}
+                    onChange={(e) => {
+                      setCurrentValue(e.target.value);
+                      setOnChangeInput(true);
+                    }}
+                    style={{ width: "50%" }}
+                    disabled={submit}
+                  />
+
+                  <input
+                    style={
+                      onChangeInput
+                        ? {
+                            background: "#FE188B",
+                            marginBottom: "5%",
+                            width: "25%",
+                            cursor: "pointer",
+                          }
+                        : {
+                            background: "#FDC6E2",
+                            marginBottom: "5%",
+                            width: "25%",
+                          }
+                    }
+                    type="submit"
+                    defaultValue="Submit"
+                    disabled={!onChangeInput}
+                    onClick={() => {
+                      if (submit) {
+                        alert("Question already answered.");
+                        return;
+                      }
+                      if (currentValue >= 0 && currentValue <= 70) {
+                        setSubmit(true);
+                        showModal();
+                        return;
+                      }
+                      alert("Please provide an input between 0 to 70");
+                    }}
+                  />
+                </div>
+                {submit && (
+                  <div>
+                    <Modal
+                      title="Feedback"
+                      open={isModalOpen}
+                      onOk={handleOk}
+                      okText="Next"
+                      footer={[
+                        <div className="button-container">
+                          <Button
+                            key="Next"
+                            type="primary"
+                            shape="round"
+                            size="large"
+                            onClick={handleOk}
+                          >
+                            Next
+                          </Button>
+                          ,
+                        </div>,
+                      ]}
+                    >
+                      <p>Your irrigation: {currentValue}</p>
+                      <p>
+                        The model's irrigation estimate:{" "}
+                        {modelValues[currentQuestion]}
+                      </p>
+                      <p>
+                        The optimal amount of irrigation:{" "}
+                        {correctValues[currentQuestion]}
+                      </p>
+                    </Modal>
+
+                    {/* {currentQuestion === 14 && (
                   <button
                     className="btn btn-primary btn-lg btn-demo"
                     style={{ position: "relative", left: "10%" }}
@@ -470,54 +440,13 @@ const Seed4 = ({
                     Proceed to next seed
                   </button>
                 )} */}
-
-                <button
-                  className="btn btn-primary btn-lg btn-demo"
-                  style={{ position: "relative", left: "45%" }}
-                  onClick={() => {
-                    if (currentQuestion > 14 && currentQuestion < 19) {
-                      nums.push({
-                        x: Math.floor(Math.random() * 10) + 1,
-                        y: Math.floor(Math.random() * 10) + 1,
-                        z: Math.floor(Math.random() * 10) + 1,
-                      });
-                      setNums(nums);
-
-                      modelValues.push(
-                        Math.floor(
-                          2 * nums[0].x + 0.9 * nums[0].y + 0.8 * nums[0].z
-                        )
-                      );
-                      setModelValues(modelValues);
-
-                      correctValues.push(
-                        Math.floor(
-                          1.8 * nums[0].x + nums[0].y + 0.7 * nums[0].z
-                        )
-                      );
-                      setCorrectValues(correctValues);
-                    }
-
-                    values.push(currentValue);
-                    setValues(values);
-
-                    if (currentQuestion === 19 || currentQuestion === 14) {
-                      setShowGraph(true);
-                    } else {
-                      setCurrentQuestion(currentQuestion + 1);
-                    }
-
-                    setOnChangeInput(false);
-                    setSubmit(false);
-                  }}
-                >
-                  Next
-                </button>
+                  </div>
+                )}
               </div>
             )}
           </div>
-        )}
-      </div>
+        </Content>
+      </Layout>
     </div>
   );
 };

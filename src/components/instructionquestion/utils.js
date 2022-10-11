@@ -41,7 +41,7 @@ export function generateQ4() {
     return {
         question: "During the Official Rounds you",
         options: [
-          "choose 20 times between your own estimations and the statistical model’s estimations to determine your bonus income from this task",
+          "choose 20 times between your own estimations and the statistical model’s estimations",
           "do not have to make your own estimations",
           "cannot earn any money",
           "make estimations for two of the four crop types"
